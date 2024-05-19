@@ -1,0 +1,34 @@
+.fixed-bottom {
+  background-color: #343a40;
+  color: white;
+  padding: 10px;
+}
+.message-area {
+  background-color: white;
+  padding: 20px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+.message {
+  display: flex;
+  align-items: start;
+  margin-bottom: 20px;
+}
+.message img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.message-text {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+.input-field {
+  width: 70% !important; max-width: 500px;
+}
+/*
+.send-button {
+  height: 40px;
+} */
