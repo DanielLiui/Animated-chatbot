@@ -28,7 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /*
+  const emotionImgs = {
+    
+  }
+
   function getResponse() {
+    //get AI response & list of emotions
+    //display bot img matching emotion
+    /if no img matches emotion, display img matching overall sentiment (positive/neutral/neg)
     let message = inputField.value.trim()
 
     if (message !== '') {
@@ -43,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ret = JSON.parse(xr.responseText)
           console.log("Resp from server: " + ret)
 
-          
+
         }
       }
     }

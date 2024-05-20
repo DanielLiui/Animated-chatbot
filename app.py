@@ -5,7 +5,7 @@ app = Flask(__name__)
 import os
 import requests
 
-#AI stuff
+#AI setup
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.schema import BaseOutputParser
@@ -22,7 +22,7 @@ bot = ConversationChain(llm=mdl)
 #AI functs
 def getEmotions(text):
   emotionBot = ConversationChain(llm=mdl)
-  prompt = '''Given a message/text, you will only reply the main emotions expressed in it seperated by only commas. 
+  prompt = '''Given a message/text/question, you will only reply the main emotions expressed in it seperated by only commas. 
   You may put spaces if an emotion contains more than one word.
   Make sure that the emotions are feelings. For example:
   'I love pies! Pumpkin pie is my favourite. I can't wait to go to bakery to get some pie!'
@@ -55,11 +55,15 @@ def chat():
 
     respObj = bot.invoke(inp);  
     resp = respObj["response"]
-    emotions = getEmotions(resp);  print(str(emotions), '\n')
+    emotions = getEmotions(resp);  
     emotion_emoji = getEmoji(emotions[0])
 
     print(f'{resp} {emotion_emoji} \n')
+    print(str(emotions), '\n')
     #print(f'{resp} \n')
+
+
+chat()
 
 #routes
 @app.route("/")
