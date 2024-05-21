@@ -1,7 +1,9 @@
 
 
 from flask import Flask, render_template, url_for, request, jsonify
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 import os
 import requests
 
@@ -46,6 +48,7 @@ def getEmoji(text):
   return resp.json()["emoji"]
 
 
+#chat with GPT in the terminal
 def chat():
   print("You can start talking to GPT. Enter 'quit' to exit: ")
 
@@ -63,12 +66,21 @@ def chat():
     #print(f'{resp} \n')
 
 
-chat()
-
 #routes
 @app.route("/")
 def home():
   return render_template("index.html")
+
+
+@app.route("/getResponse", methods=["POST"])
+def getResponse():
+  message = request.get_json()['message']
+  print("Message: " + message)
+  respObj = bot.invoke(message);  
+  botResp = respObj["response"]
+  resp = {"response": botResp}
+
+  return jsonify(resp)
 
 
 @app.route("/test", methods=["POST"])

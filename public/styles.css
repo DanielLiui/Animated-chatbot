@@ -1,3 +1,8 @@
+
+.navbar-brand {
+  margin: 0 auto;
+  font-weight: bold;
+}
 .fixed-bottom {
   background-color: #343a40;
   color: white;
@@ -5,6 +10,8 @@
 }
 .message-area {
   background-color: white;
+  max-width: 500px;
+  margin: 0 auto;
   padding: 20px;
   height: calc(100vh - 100px);
   overflow-y: auto;
@@ -26,8 +33,13 @@
   line-height: normal;
 }
 .input-field {
-  width: 70% !important; max-width: 500px;
+  width: 500px;
+  max-width: 100%;
 }
+.selected-button {
+  background-color: rgb(128, 128, 128);
+}
+
 /*
 .send-button {
   height: 40px;
