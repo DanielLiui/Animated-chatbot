@@ -6,7 +6,7 @@
 
 Windows:
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
->.venv\Scripts\activate
+> .venv\Scripts\activate
 
 Mac:
 >source .venv/bin/activate
