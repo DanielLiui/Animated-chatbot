@@ -5,7 +5,7 @@
 1. Activate virtual environment by selecting virtual environment as your interpreter in the bottom right or
 
 Windows:
->> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 >> .venv\Scripts\activate
 
 Mac:
