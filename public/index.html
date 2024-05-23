@@ -8,6 +8,7 @@
   <title> Chatbot </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" type="image/x-icon" href="logo.ico"/>
 </head>
 
 <body>
@@ -16,25 +17,24 @@
   </nav>
 
   <!-- sample messages -->  
-  <div class="message-area mx-auto">
-    <!-- <div class="message">
-      <img src="../assets/porcupine.png">
-      <span class="message-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ipsam possimus aspernatur necessitatibus ut adipisci minima eveniet repudiandae explicabo maiores.
-      </span>
-    </div>
-    <div class="message">
-      <img src="../assets/K-VRC.png">
-      <span class="message-text">
-        Amet consectetur adipisicing elit. Vel quasi ad nam repudiandae non? Enim.
-      </span>
-    </div> -->
+  <div class="message-area mx-auto"></div>
+  <!-- <div class="message">
+    <img src="../assets/porcupine.png">
+    <span class="message-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ipsam possimus aspernatur necessitatibus ut adipisci minima eveniet repudiandae explicabo maiores.
+    </span>
   </div>
+  <div class="message">
+    <img src="../assets/K-VRC.png">
+    <span class="message-text">
+      Amet consectetur adipisicing elit. Vel quasi ad nam repudiandae non? Enim.
+    </span>
+  </div> -->
 
   <div class="input-div fixed-bottom d-flex flex-column align-items-center">
     <div class="mb-2">
-      <button type="button" class="btn btn-light mr-1 selected-button">Text chat</button>
-      <button type="button" class="btn btn-light">Audio chat</button>
+      <button type="button" class="btn btn-light mr-1 selected-button" onclick="toggle(this)">Text chat</button>
+      <button type="button" class="btn btn-light" onclick="toggle(this)">Audio chat</button>
     </div>
     <form class="d-flex">
       <input type="text" class="form-control mr-2 input-field"> </input>
@@ -43,7 +43,9 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="buttonsListener.js"></script>
   <script src="textChatClient.js"></script>
+  <script src="audioChatClient.js"></script>
 </body>
 </html>
 
