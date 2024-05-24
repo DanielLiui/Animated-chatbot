@@ -17,29 +17,31 @@
   </nav>
 
   <!-- sample messages -->  
-  <div class="message-area mx-auto"></div>
-  <!-- <div class="message">
-    <img src="../assets/porcupine.png">
-    <span class="message-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ipsam possimus aspernatur necessitatibus ut adipisci minima eveniet repudiandae explicabo maiores.
-    </span>
-  </div>
-  <div class="message">
-    <img src="../assets/K-VRC.png">
-    <span class="message-text">
-      Amet consectetur adipisicing elit. Vel quasi ad nam repudiandae non? Enim.
-    </span>
-  </div> -->
+  <div class="message-area mx-auto mode active" id="text-mode"></div>
+
+  <div class="mode" id="talk-mode"></div>
 
   <div class="input-div fixed-bottom d-flex flex-column align-items-center">
     <div class="mb-2">
-      <button type="button" class="btn btn-light mr-1 selected-button" onclick="toggle(this)">Text chat</button>
-      <button type="button" class="btn btn-light" onclick="toggle(this)">Audio chat</button>
+      <button type="button" class="btn btn-light mr-1 selected-button" id="text-chat-button" onclick="toggleChatButtons(this)">Text Chat</button>
+      <button type="button" class="btn btn-light" id="audio-chat-button" onclick="toggleChatButtons(this)">Audio Chat</button>
     </div>
-    <form class="d-flex">
-      <input type="text" class="form-control mr-2 input-field"> </input>
-      <button class="btn btn-primary send-button"> Send </button>
-    </form>
+
+    <div class="mode active" id="text-mode-form">
+      <form class="d-flex">
+        <input type="text" class="form-control mr-2 input-field"> </input>
+        <button class="btn btn-primary send-button"> Send </button>
+      </form>
+    </div>
+
+    <div class="mode" id="talk-mode-form">
+      <button type="button" class="btn btn-light audio-buttons" id="microphone-button">
+        <img src="../assets/microphone.png" alt="microphone">
+      </button>
+      <button type="button" class="btn btn-light audio-buttons" id="audio-send-button">
+        <img src="../assets/paper-airplane.png" alt="airplane">
+      </button>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
