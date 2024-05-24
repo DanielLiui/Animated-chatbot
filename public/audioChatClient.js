@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // const recordButton = document.querySelector("#microphone-button");
     const recordButton = document.getElementById('microphone-button');
     const sendButton = document.querySelector("#audio-send-button");
 
+    let botResponseText = "";
     let recognition;
 
     // Check for SpeechRecognition API
@@ -31,6 +31,33 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('Speech recognition error', event.error);
     };
 
+    function TTS(text) {
+        if ('speechSynthesis' in window) {
+            let utterance = new SpeechSynthesisUtterance(text);
+            utterance.pitch = 1;
+            utterance.rate = 1;
+            utterance.volume = 1;
+            utterance.lang = 'en-US';
+
+            utterance.onstart = function(event) {
+                console.log('Speech has started.');
+            };
+
+            utterance.onend = function(event) {
+                console.log('Speech has ended.');
+            };
+
+            utterance.onerror = function(event) {
+                console.error('SpeechSynthesisUtterance.onerror');
+            };
+
+            window.speechSynthesis.speak(utterance);
+        } 
+        else {
+            alert('Web Speech API is not supported in this browser.');
+        }
+    }
+
     recordButton.addEventListener("click", () => {        
         recordButton.blur();
 
@@ -58,6 +85,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         sendMessage('porcupine.png', transcript)  //display user message
         botResponse(transcript)
+
+        setTimeout(function() {
+            const messages = document.querySelectorAll('.message');
+            const lastMessage = messages[messages.length - 1];
+            const spanInLastMessage = lastMessage.querySelector('span');
+            botResponseText = spanInLastMessage.textContent;
+            console.log(botResponseText)
+
+            TTS(botResponseText)
+        }, 3000);
+
         transcript = ""
     });
 });
