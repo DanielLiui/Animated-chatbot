@@ -55,15 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
   sendButton.addEventListener('click', (ev)=> {
     ev.preventDefault()
     messageExchange()
-  });
+  })
 
   inputField.addEventListener('keydown', (ev)=> {
     if (ev.key === 'Enter') {
       ev.preventDefault()
       messageExchange()
     }
-  });
-});
+  })
+})
 
 
   

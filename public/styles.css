@@ -1,4 +1,6 @@
 
+
+
 .navbar-brand {
   margin: 0 auto;
   font-weight: bold;
@@ -39,6 +41,35 @@
 .selected-button {
   background-color: rgb(128, 128, 128);
 }
+
+/* Audio chat */
+#bot-img {
+  width: 200px;
+}
+
+#bot-img-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 70vw;
+}
+
+#audio-input-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+}
+
+/* #record-button {
+  border-radius: 50%;
+}
+
+#send-button {
+  border-radius: 50%;
+} */
+
 
 /*
 .send-button {
