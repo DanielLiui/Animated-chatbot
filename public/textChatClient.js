@@ -1,46 +1,43 @@
+let sendButton = document.querySelector(".send-button")
+let inputField = document.querySelector(".input-field")
+let messageArea = document.querySelector(".message-area")
+serverPort = 'http://127.0.0.1:8000'
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  let sendButton = document.querySelector(".send-button")
-  let inputField = document.querySelector(".input-field")
-  let messageArea = document.querySelector(".message-area")
-  serverPort = 'http://127.0.0.1:8000'
+//functions (event listeners below)
+function sendMessage(profileImg, message) {
+  let messageDiv = document.createElement('div')
+  messageDiv.className = 'message'
 
-  
-  //functions (event listeners below)
-  function sendMessage(profileImg, message) {
-    let messageDiv = document.createElement('div')
-    messageDiv.className = 'message'
+  let img = document.createElement('img')
+  img.src = '../assets/' + profileImg
+  messageDiv.appendChild(img)
 
-    let img = document.createElement('img')
-    img.src = '../assets/' + profileImg
-    messageDiv.appendChild(img)
-
-    let messageSpan = document.createElement('span');
-    messageSpan.className = 'message-text'
-    messageSpan.textContent = message
-    messageDiv.appendChild(messageSpan)
-    messageArea.appendChild(messageDiv)
-  }
+  let messageSpan = document.createElement('span');
+  messageSpan.className = 'message-text'
+  messageSpan.textContent = message
+  messageDiv.appendChild(messageSpan)
+  messageArea.appendChild(messageDiv)
+}
 
 
-  function botResponse(message) {
-    let reqData = {message: message} 
-    xr = new XMLHttpRequest()
-    xr.open("POST", serverPort + "/getResponse")  //+
-    xr.setRequestHeader("Content-Type", "application/json")
-    xr.send(JSON.stringify(reqData))
+function botResponse(message) {
+  let reqData = {message: message} 
+  xr = new XMLHttpRequest()
+  xr.open("POST", serverPort + "/getResponse")  //+
+  xr.setRequestHeader("Content-Type", "application/json")
+  xr.send(JSON.stringify(reqData))
 
-    xr.onreadystatechange = () => {
-      if (xr.readyState == 4 && xr.status == 200) {
-        ret = JSON.parse(xr.responseText)
-        console.log("Resp from server: " + ret)
-        sendMessage("K-VRC.png", ret.response)
-      }
+  xr.onreadystatechange = () => {
+    if (xr.readyState == 4 && xr.status == 200) {
+      ret = JSON.parse(xr.responseText)
+      console.log("Resp from server: " + ret)
+      sendMessage("K-VRC.png", ret.response)
     }
   }
+}
 
-
+document.addEventListener("DOMContentLoaded", () => {
   function messageExchange() {
     message = inputField.value.trim()
 
