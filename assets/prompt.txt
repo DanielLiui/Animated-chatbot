@@ -1,7 +1,0 @@
-
-Hey Copilot, can you generate for me a webpage that looks like index.html but 
-
-- Instead of a message-area div, there's a bot-img-div displaying an image vertically and horizontally centered in the middle
-- In the input-div, the text & audio chat buttons are still there but instead of an input box and send button there's a microphone button and send button
-- When clicking the microphone button (on mode), the user can speak and what they're saying is recorded into textual words that can be viewed in the input box in index.html
-- Clicking microphone button again (off mode) will stop the speech input, and clicking it again (on mode) will let the user append input to what they said before
