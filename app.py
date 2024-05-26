@@ -48,6 +48,19 @@ def getEmoji(text):
   return resp.json()["emoji"]
 
 
+def getTone(text):
+  url = "https://twinword-twinword-bundle-v1.p.rapidapi.com/sentiment_analyze/"
+  querystring = {"text": text}
+  headers = {
+    "X-RapidAPI-Key": "e3938739a7msh9e96af120838cd6p124f95jsncd04a2b21318",
+    "X-RapidAPI-Host": "twinword-twinword-bundle-v1.p.rapidapi.com"
+  }
+
+  toneObj = requests.get(url, headers=headers, params=querystring).json()
+  print(str(toneObj))
+  #return toneObj
+
+
 #chat with GPT in the terminal
 def chat():
   print("You can start talking to GPT. Enter 'quit' to exit: ")
@@ -90,6 +103,9 @@ def test():
 
   resp = {"message": "Thanks"}
   return jsonify(resp)
+
+
+getTone("The text you provided acknowledges the gravity of loss and suffering caused by war. It emphasizes the importance of recognizing the human cost and seeking peaceful resolutions")
 
 
 if __name__ == "__main__":
