@@ -58,7 +58,7 @@ def getTone(text):
 
   toneObj = requests.get(url, headers=headers, params=querystring).json()
   print(str(toneObj))
-  #return toneObj
+  return toneObj
 
 
 #chat with GPT in the terminal
@@ -97,7 +97,7 @@ def getResponse():
 
 
 @app.route("/getTone", methods=["POST"])
-def getTone():
+def getToneRoute():
   text = request.get_json()['text']
   resp = {"tone": getTone(text)}
 
