@@ -1,7 +1,6 @@
 let sendButton = document.querySelector(".send-button")
 let inputField = document.querySelector(".input-field")
 let messageArea = document.querySelector(".message-area")
-serverPort = 'http://127.0.0.1:8000'
 
 
 //functions (event listeners below)

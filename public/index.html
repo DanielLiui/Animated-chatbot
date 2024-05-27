@@ -17,14 +17,14 @@
     <a class="navbar-brand nav-title" href="#"> Chatbot </a>
   </nav>
 
-  <!-- sample messages -->  
   <div class="message-area mx-auto mode active" id="text-mode"></div>
 
   <div class="mode" id="talk-mode">
-    <img id="bot-img" src="../assets/animationImages/positiveNotTalk.jpg" alt=""> 
-    <!--  -->
+    <div id="img-div"> 
+      <img id="bot-img" src="../assets/animationImages/noTalkPositive.jpg" alt=""> 
+    </div>
   </div>
-
+  
 
   <div class="input-div fixed-bottom d-flex flex-column align-items-center">
     <div class="mb-2">
@@ -52,6 +52,7 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="global.js"></script>
   <script src="buttonsListener.js"></script>
   <script src="textChatClient.js"></script>
   <script src="audioChatClient.js"></script>

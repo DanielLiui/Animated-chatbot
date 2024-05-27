@@ -96,6 +96,15 @@ def getResponse():
   return jsonify(resp)
 
 
+@app.route("/getTone", methods=["POST"])
+def getTone():
+  text = request.get_json()['text']
+  resp = {"tone": getTone(text)}
+
+  return jsonify(resp)
+
+
+
 @app.route("/test", methods=["POST"])
 def test():
   data = request.get_json() 
@@ -103,9 +112,6 @@ def test():
 
   resp = {"message": "Thanks"}
   return jsonify(resp)
-
-
-getTone("The text you provided acknowledges the gravity of loss and suffering caused by war. It emphasizes the importance of recognizing the human cost and seeking peaceful resolutions")
 
 
 if __name__ == "__main__":
