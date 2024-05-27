@@ -1,8 +1,13 @@
+function log(s) {
+  console.log(s)
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const recordButton = document.getElementById('microphone-button');
     const sendButton = document.querySelector("#audio-send-button");
+    const botImg = document.querySelector("#bot-img");
 
-    let botResponseText = "";
+    let botResp = "";
     let recognition;
 
     // Check for SpeechRecognition API
@@ -33,30 +38,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function TTS(text) {
         if ('speechSynthesis' in window) {
-            let utterance = new SpeechSynthesisUtterance(text);
-            utterance.pitch = 1;
-            utterance.rate = 1;
-            utterance.volume = 1;
-            utterance.lang = 'en-US';
+            let utterance = new SpeechSynthesisUtterance(text)
+            utterance.pitch = 1
+            utterance.rate = 1
+            utterance.volume = 1
+            utterance.lang = 'en-US'
 
-            utterance.onstart = function(event) {
-                console.log('Speech has started.');
-            };
+            utterance.onstart = function(ev) {
+                
+            }
 
-            utterance.onend = function(event) {
-                console.log('Speech has ended.');
-            };
+            utterance.onend = function(ev) {
+                
+            }
 
-            utterance.onerror = function(event) {
-                console.error('SpeechSynthesisUtterance.onerror');
-            };
+            utterance.onerror = function(ev) {
+                
+            }
 
-            window.speechSynthesis.speak(utterance);
+            window.speechSynthesis.speak(utterance)
         } 
         else {
-            alert('Web Speech API is not supported in this browser.');
+            alert('Web Speech API is not supported in this browser.')
         }
     }
+
+    /*
+    function getTone(text) {
+      let reqData = {text: text} 
+      xr = new XMLHttpRequest()
+      xr.open("POST", serverPort + "/getTone")  
+      xr.setRequestHeader("Content-Type", "application/json")
+      xr.send(JSON.stringify(reqData))
+
+      xr.onreadystatechange = () => {
+        if (xr.readyState == 4 && xr.status == 200) {
+          ret = JSON.parse(xr.responseText)
+          console.log("Resp from server: " + ret)
+          return ret.tone
+        }
+      }
+    }
+
+    function animationWithTTS(text) {
+      let sentences = text.split('. ')
+      let tone = ''
+      let utterance = new SpeechSynthesisUtterance(text);
+
+      for (sentence in sentences) {
+        tone = getTone(sentence)  //if sentence ends with '!', tone = excited
+        let botExpressionFilename = getExpressionImg(tone) 
+        TTS(utterance, sentence)
+        botImg.src = '../assets/animationImages/' + botExpressionFilename
+      }
+
+      utterance.onend = function(ev) {
+        botImg.src = '../assets/animationImages/'
+
+        if (tone == 'positive' || tone == 'neutral') {
+          botImg.src += 'positiveNoTalk.jpg'
+        }
+        else if (tone == 'excited') { 
+          botImg.src += 'excitedNoTalk.jpg'
+        }
+        else {  //serious
+          botImg.src += 'seriousNoTalk.jpg'
+        }
+      }
+        
+    }
+    */
+
 
     recordButton.addEventListener("click", () => {        
         recordButton.blur();
@@ -75,10 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    sendButton.addEventListener("click", function() {
+    sendButton.addEventListener("click", ()=> {
         sendButton.blur();
         
-        if( recordButton.classList.contains("selected-button") ) {
+        if (recordButton.classList.contains("selected-button")) {
             alert("Recording stopped.")
             recognition.stop();
             recordButton.classList.remove("selected-button");
@@ -90,10 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const messages = document.querySelectorAll('.message');
             const lastMessage = messages[messages.length - 1];
             const spanInLastMessage = lastMessage.querySelector('span');
-            botResponseText = spanInLastMessage.textContent;
-            console.log(botResponseText)
+            botResp = spanInLastMessage.textContent;
+            console.log(botResp)
 
-            TTS(botResponseText)
+            //TTS(botResp)
+            animation&TTS(botResp)
         }, 3000);
 
         transcript = ""
