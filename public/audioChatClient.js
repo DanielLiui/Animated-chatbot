@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /*
+    
     function getTone(text) {
       return new Promise((resolve, reject) => {
         let reqData = {text: text}
@@ -78,30 +78,61 @@ document.addEventListener("DOMContentLoaded", () => {
             log("Resp from server: " + toneObj)
 
             if (toneObj.tone == 'positive' && text[text.length - 1] == '!') {
-              return 'excited'
+              resolve('excited')
             }
             else if (toneObj.tone == 'negative') {
-              return 'serious'
+              resolve('serious')
             }
             else {
-              return toneObj.tone
+              resolve(toneObj.tone)
             }
-          } else {
-            reject(new Error('Request failed with status ' + xr.status))
+          // } else {
+          //   reject(new Error('Request failed with status ' + xr.status))
           }
         }
       })
     }
 
+    
+    function getTone2(text) {
+      return new Promise((resolve, reject) => { 
+        fetch(serverPort + '/getTone', {
+          method: 'POST', headers: { "Content-Type": "application/json" }, 
+          body: JSON.stringify({text: text})
+
+        }).then((resp) => {
+          if (resp.status != 200) throw new Error("Error getting response from /getTone")
+          return resp.json()
+
+        }).then((toneObj)=> {
+          log("Resp from server: " + toneObj)
+
+          if (toneObj.tone == 'positive' && text[text.length - 1] == '!') {
+            resolve('excited')
+          }
+          else if (toneObj.tone == 'negative') {
+            resolve('serious')
+          }
+          else {
+            resolve(toneObj.tone)
+          }
+
+        }).catch((err)=> {
+          reject(err)
+        })
+      })
+    }
+
+    /*
     function animationWithTTS(text) {
       let sentences = text.split('. ')
       let tone = ''
-      let utterance = new SpeechSynthesisUtterance(text);
+      const utterance
 
       for (sentence in sentences) {
-        tone = getTone(sentence)  //if sentence ends with '!', tone = excited
+        tone = getTone(sentence)  
         let botExpressionFilename = getExpressionImg(tone) 
-        TTS(utterance, sentence)
+        utterance = TTS(sentence)
         botImg.src = '../assets/animationImages/' + botExpressionFilename
       }
 
@@ -109,13 +140,13 @@ document.addEventListener("DOMContentLoaded", () => {
         botImg.src = '../assets/animationImages/'
 
         if (tone == 'positive' || tone == 'neutral') {
-          botImg.src += 'positiveNoTalk.jpg'
+          botImg.src += 'noTalkPositive.jpg'  
         }
         else if (tone == 'excited') { 
-          botImg.src += 'excitedNoTalk.jpg'
+          botImg.src += 'noTalkExcited.jpg'
         }
         else {  //serious
-          botImg.src += 'seriousNoTalk.jpg'
+          botImg.src += 'noTalkSerious.jpg'
         }
       }
         
@@ -164,4 +195,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         transcript = ""
     });
+
+    //test
+    text1 = "Before adopting, it’s important to consider the commitment and responsibility of pet ownership"
+    text2 = "The text you provided acknowledges the gravity of loss and suffering caused by war. It emphasizes the importance of recognizing the human cost and seeking peaceful resolutions"
+    text3 = "What's 3 * 9?"
+    text4 = "Good luck with your project!"
+    getTone2(text1).then(tone => {
+      log(text1 + "\ntone: " + tone)
+    })
 });
