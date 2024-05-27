@@ -58,7 +58,7 @@ def getTone(text):
 
   toneObj = requests.get(url, headers=headers, params=querystring).json()
   print(str(toneObj))
-  #return toneObj
+  return toneObj
 
 
 #chat with GPT in the terminal
@@ -95,6 +95,11 @@ def getResponse():
 
   return jsonify(resp)
 
+@app.route("/getTone", methods=["POST"])
+def getToneRoute():
+  text = request.get_json()['text']
+  tone = getTone(text)
+  return jsonify(tone)
 
 @app.route("/test", methods=["POST"])
 def test():
@@ -105,7 +110,7 @@ def test():
   return jsonify(resp)
 
 
-getTone("The text you provided acknowledges the gravity of loss and suffering caused by war. It emphasizes the importance of recognizing the human cost and seeking peaceful resolutions")
+# getTone("The text you provided acknowledges the gravity of loss and suffering caused by war. It emphasizes the importance of recognizing the human cost and seeking peaceful resolutions")
 
 
 if __name__ == "__main__":

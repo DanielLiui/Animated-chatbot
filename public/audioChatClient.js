@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let botResponseText = "";
     let recognition;
 
+    let currentTone = ""
+    let currentScore = ""
+
     // Check for SpeechRecognition API
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
@@ -30,6 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
     recognition.onerror = (event) => {
         console.error('Speech recognition error', event.error);
     };
+
+    function analyzeTone(text) {
+        fetch(serverPort + '/getTone', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text: text })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // console.log('Tone analysis result:', data);
+            // Process and display tone analysis result as needed
+            currentTone = data.type
+            currentScore = data.score
+            console.log(currentTone)
+            console.log(currentScore)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
     function TTS(text) {
         if ('speechSynthesis' in window) {
@@ -93,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             botResponseText = spanInLastMessage.textContent;
             console.log(botResponseText)
 
+            analyzeTone(botResponseText)
             TTS(botResponseText)
         }, 3000);
 
