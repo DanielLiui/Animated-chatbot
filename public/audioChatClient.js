@@ -97,31 +97,57 @@ document.addEventListener("DOMContentLoaded", () => {
     function getTone2(text) {
       return new Promise((resolve, reject) => { 
         fetch(serverPort + '/getTone', {
-          method: 'POST', headers: { "Content-Type": "application/json" }, 
-          body: JSON.stringify({text: text})
-
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text: text })
         }).then((resp) => {
-          if (resp.status != 200) throw new Error("Error getting response from /getTone")
-          return resp.json()
+            if (resp.status != 200) throw new Error("Error getting response from /getTone")
+            return resp.json()
 
         }).then((toneObj)=> {
-          log("Resp from server: " + toneObj)
+            log("Resp from server: " + toneObj)
 
-          if (toneObj.tone == 'positive' && text[text.length - 1] == '!') {
+            if (toneObj.tone == 'positive' && text[text.length - 1] == '!') {
             resolve('excited')
-          }
-          else if (toneObj.tone == 'negative') {
+            }
+            else if (toneObj.tone == 'negative') {
             resolve('serious')
-          }
-          else {
+            }
+            else {
             resolve(toneObj.tone)
-          }
+            }
 
         }).catch((err)=> {
-          reject(err)
+            reject(err)
         })
       })
     }
+
+    /*
+        function analyzeTone(text) {
+        fetch(serverPort + '/getTone', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text: text })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // console.log('Tone analysis result:', data);
+            // Process and display tone analysis result as needed
+            currentTone = data.type
+            currentScore = data.score
+            console.log("Current Tone: ", currentTone)
+            console.log("Current Score: ", currentScore)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        }
+    */
 
     /*
     function animationWithTTS(text) {
