@@ -55,6 +55,17 @@
   width: 70vw;
 }
 
+#talk-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#bot-img {
+  width: 200px;
+}
+
 #audio-input-div {
   display: flex;
   justify-content: space-around;

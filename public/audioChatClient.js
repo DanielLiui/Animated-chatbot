@@ -65,19 +65,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /*
     function getTone(text) {
-      let reqData = {text: text} 
-      xr = new XMLHttpRequest()
-      xr.open("POST", serverPort + "/getTone")  
-      xr.setRequestHeader("Content-Type", "application/json")
-      xr.send(JSON.stringify(reqData))
+      return new Promise((resolve, reject) => {
+        let reqData = {text: text}
+        let xr = new XMLHttpRequest()
+        xr.open("POST", serverPort + "/getTone")
+        xr.setRequestHeader("Content-Type", "application/json")
+        xr.send(JSON.stringify(reqData))
 
-      xr.onreadystatechange = () => {
-        if (xr.readyState == 4 && xr.status == 200) {
-          ret = JSON.parse(xr.responseText)
-          console.log("Resp from server: " + ret)
-          return ret.tone
+        xr.onreadystatechange = () => {
+          if (xr.readyState == 4 && xr.status == 200) {
+            let toneObj = JSON.parse(xr.responseText)
+            log("Resp from server: " + toneObj)
+
+            if (toneObj.tone == 'positive' && text[text.length - 1] == '!') {
+              return 'excited'
+            }
+            else if (toneObj.tone == 'negative') {
+              return 'serious'
+            }
+            else {
+              return toneObj.tone
+            }
+          } else {
+            reject(new Error('Request failed with status ' + xr.status))
+          }
         }
-      }
+      })
     }
 
     function animationWithTTS(text) {
