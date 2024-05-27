@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Process and display tone analysis result as needed
             currentTone = data.type
             currentScore = data.score
-            console.log(currentTone)
-            console.log(currentScore)
+            console.log("Current Tone: ", currentTone)
+            console.log("Current Score: ", currentScore)
         })
         .catch(error => {
             console.error('Error:', error);
