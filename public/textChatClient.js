@@ -24,7 +24,7 @@ function sendMessage(profileImg, message) {
 function botResponse(message) {
   let reqData = {message: message} 
   xr = new XMLHttpRequest()
-  xr.open("POST", serverPort + "/getResponse")  //+
+  xr.open("POST", serverPort + "/getResponse")  
   xr.setRequestHeader("Content-Type", "application/json")
   xr.send(JSON.stringify(reqData))
 

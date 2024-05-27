@@ -9,12 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function startAnimation() {
     let imgs = ["K smile.png", "K grin.png", "K laugh 2.png"]
     let img_i = 0
-    let fps = 1
   
     intervalID = setInterval(()=> {
       botImg.src = "../assets/" + imgs[img_i];
       img_i = (img_i + 1) % imgs.length
-    }, 1000/fps)
+    }, 1000)
   
   }
 
