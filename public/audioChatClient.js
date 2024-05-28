@@ -93,13 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     })
   }
-  
-
-  // function getTone(text) {
-  //   getToneHelper(text).then(tone => {
-  //     return tone
-  //   })
-  // }
 
 
   function getExpressionImg(tone) {
@@ -151,52 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
-  /*
-  function animationWithTTS(text) {
-    let sentences = text.split('. ')
-    let tone = ''
-    let utterance = null
-
-    //static animation
-    for (let sentence of sentences) {
-      getTone(sentence).then(tone => {
-        let expressionFilename = getExpressionImg(tone) 
-        utterance = TTS(sentence)
-        botImg.src = '../assets/animationImages/' + expressionFilename
-
-        log('sentence: ' + sentence)
-        log('tone: ' + tone)
-        log('expression file: ' + expressionFilename)
-      }) 
-    }
-
-    //fidgety animation
-    for (sentence in sentences) {
-      tone = getTone(sentence)  
-      let expressionImgs = getExpressions(tone) //
-      utterance = TTS(sentence)
-      fidgetyAnimation(expressionImgs)
-    }
-    
-    //display silent expression based on last tone
-    utterance.onend = function(ev) {
-      botImg.src = '../assets/animationImages/'
-
-      if (tone == 'positive' || tone == 'neutral') {
-        botImg.src += 'noTalkPositive.jpg'  
-      }
-      else if (tone == 'excited') { 
-        botImg.src += 'noTalkExcited.jpg'
-      }
-      else {  //serious
-        botImg.src += 'noTalkSerious.jpg'
-      }
-    }
-    
-      
-  }
-  */
 
   function fidgetyAnimation(imgs) {
     let img_i = 0
