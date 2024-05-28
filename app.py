@@ -48,7 +48,7 @@ def getEmoji(text):
   return resp.json()["emoji"]
 
 
-def getTone(text):
+def getToneInfo(text):
   url = "https://twinword-twinword-bundle-v1.p.rapidapi.com/sentiment_analyze/"
   querystring = {"text": text}
   headers = {
@@ -56,9 +56,9 @@ def getTone(text):
     "X-RapidAPI-Host": "twinword-twinword-bundle-v1.p.rapidapi.com"
   }
 
-  toneObj = requests.get(url, headers=headers, params=querystring).json()
-  print(str(toneObj))
-  #return toneObj
+  toneInfo = requests.get(url, headers=headers, params=querystring).json()
+  print(str(toneInfo))
+  return toneInfo
 
 
 #chat with GPT in the terminal
@@ -97,11 +97,9 @@ def getResponse():
 
 
 @app.route("/getTone", methods=["POST"])
-def getTone():
+def getToneRoute():
   text = request.get_json()['text']
-  resp = {"tone": getTone(text)}
-
-  return jsonify(resp)
+  return getToneInfo(text)
 
 
 
