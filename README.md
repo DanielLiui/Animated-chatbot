@@ -17,3 +17,10 @@ Mac terminal:
 
 4. Start chatting with the Chatbot
 
+
+# To do
+Audio chat:
+- Improve voice to sound more natural
+- Talking in audio chat then opening text chat will display what u said
+- Fix issue where animation doesn't display for initial sentence
+- Tweak animations & add fidgity animation
