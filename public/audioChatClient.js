@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     log("You said: " + message)
     botResponse(message).then((reply)=> { 
-      userMessages.push(message); message = ''
+      saveUserMessage(message); message = ''
       log('Bot: ' + reply)
       animationWithGoogleTTS(botMessages[botMessages.length - 1])
     })
@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDiv.style.display = 'flex'; loadDiv.style.flexDirection = 'column'
   })
 
-
+  /* Can use pause button for testing
   pauseButton.addEventListener('click', ()=> {
     log("User: "); log(userMessages)
     log("Bot: "); log(botMessages)
@@ -325,10 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
       pauseButton.classList.remove('pressed')
     }
   })
-  
-
+  */
+  /*
   textChatButton.addEventListener('click', (ev)=> {
     window.location.href = '/textChat'
   })
-
+  */
 })

@@ -20,8 +20,9 @@
 
   <div class="input-div fixed-bottom d-flex flex-column align-items-center">
     <div class="mb-2">
-      <button type="button" class="btn btn-light mr-1 selected-text-audio-btn" id="text-mode-button" onclick="toggleChatButtons(this)">Text Chat</button>
-      <button type="button" class="btn btn-light" id="audio-mode-button" onclick="toggleChatButtons(this)">Audio Chat</button>
+      <button type="button" class="btn btn-light mr-1 selected-text-audio-btn" id="text-mode-button" onclick="openTextChat(this)">Text Chat</button>
+      <button type="button" class="btn btn-light" id="audio-mode-button" onclick="openAudioChat(this)">Audio Chat</button>
+      <button type="button" class="btn btn-light" id="new-chat-button" onclick="newChat(this)">New Chat</button>
     </div>
 
     <div>

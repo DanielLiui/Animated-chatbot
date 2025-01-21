@@ -27,12 +27,12 @@
     </div>
 
   </div>
-  
 
   <div class="input-div fixed-bottom d-flex flex-column align-items-center">
     <div class="mb-2">
-      <button type="button" class="btn btn-light mr-1" id="text-mode-button" onclick="toggleChatButtons(this)">Text Chat</button>
-      <button type="button" class="btn btn-light selected-text-audio-btn" id="audio-mode-button" onclick="toggleChatButtons(this)">Audio Chat</button>
+      <button type="button" class="btn btn-light mr-1" id="text-mode-button" onclick="openTextChat(this)">Text Chat</button>
+      <button type="button" class="btn btn-light selected-text-audio-btn" id="audio-mode-button" onclick="openAudioChat(this)">Audio Chat</button>
+      <button type="button" class="btn btn-light" id="new-chat-button" onclick="newChat(this)">New Chat</button>
     </div>
 
     <div class="mode" id="talk-mode-form">
@@ -42,9 +42,9 @@
       <button type="button" class="btn btn-light audio-button" id="audio-send-button">
         <i class="fa-regular fa-paper-plane"></i>
       </button>
-      <button type="button" class="btn btn-light audio-button" id="pause-animation-button">
+      <!-- <button type="button" class="btn btn-light audio-button" id="pause-animation-button">
         <i class="fa-solid fa-play"></i>
-      </button>
+      </button> -->
     </div>
   </div>
 

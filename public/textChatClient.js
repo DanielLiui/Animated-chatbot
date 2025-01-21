@@ -6,8 +6,6 @@ let messageArea = qSel(".message-area")
 let textChatButton = qSel("#text-mode-button")
 let audioChatButton = qSel("#audio-mode-button")
 
-//message in global.js
-
 
 //functions (event listeners below)
 function sendMessage(profileImg, message) {
@@ -45,7 +43,7 @@ function botReply(message) {
 
 function messageExchange() {
   let message = inputField.value.trim()
-  userMessages.push(message) 
+  saveUserMessage(message)
   inputField.value = ''
   sendMessage('porcupine.png', message)
   botReply(message)
@@ -87,10 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
+  /*
   audioChatButton.addEventListener('click', (ev)=> {
     message = inputField.value.trim()
     window.location.href = '/audioChat'
   })
+  */
 })
 
 
