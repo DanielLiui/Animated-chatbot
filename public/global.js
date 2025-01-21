@@ -1,5 +1,5 @@
 
-const serverPort = 'http://127.0.0.1:7000'  //flask port
+const serverPort = 'https://animated-chatbot-ai-api.onrender.com'  //if working locally: http://127.0.0.1:7000
 let userMessages = []
 let botMessages = []
 let message = ''
