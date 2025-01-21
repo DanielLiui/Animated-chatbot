@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Chatbot </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark justify-content-center">
+    <a class="navbar-brand nav-title" href="#"> Chatbot </a>
+  </nav>
+
+  <audio id="audio-player" autoplay></audio>  <!-- not visible -->
+
+  <div class="message-area mx-auto" id="talk-mode">
+    <div id="bot-img-div"> 
+      <img id="bot-img" src="" alt=""> 
+    </div>
+    <div id="load-div">
+      <div class="loader"></div>
+    </div>
+
+  </div>
+  
+
+  <div class="input-div fixed-bottom d-flex flex-column align-items-center">
+    <div class="mb-2">
+      <button type="button" class="btn btn-light mr-1" id="text-mode-button" onclick="toggleChatButtons(this)">Text Chat</button>
+      <button type="button" class="btn btn-light selected-text-audio-btn" id="audio-mode-button" onclick="toggleChatButtons(this)">Audio Chat</button>
+    </div>
+
+    <div class="mode" id="talk-mode-form">
+      <button type="button" class="btn btn-light audio-button" id="microphone-button">
+        <i class="fa-solid fa-microphone"></i>
+      </button>
+      <button type="button" class="btn btn-light audio-button" id="audio-send-button">
+        <i class="fa-regular fa-paper-plane"></i>
+      </button>
+      <button type="button" class="btn btn-light audio-button" id="pause-animation-button">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="global.js"></script>
+  <script src="audioChatClient.js"></script>
+</body>
+</html>
+
+

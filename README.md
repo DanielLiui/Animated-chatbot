@@ -1,8 +1,28 @@
 # Animated chatbot
 
+Text chat:
+- GPT/Copilot styled text chat with profile pictures next to messages
+
+Audio chat:
+- Click microphone button & speak, click button again to stop recording
+- Can switch to text chat quickly to see what you said
+- Click microphone button to say more, send button to send
+
+- Chatbot will respond in audible form & have animated avatar
+- Can switch to text chat quickly to see written conversation
+
+
+# Folders & files
+- Some folders & files like flask_sesion, Lib, Scripts, & pyvenv.cfg are needed for 
+the virtual environment
 
 # Run
-1. Activate virtual environment by selecting virtual environment as your interpreter in the bottom right or
+1. Setup
+
+Install node modules:
+> npm install
+
+Activate virtual environment by selecting virtual environment as your interpreter in the bottom right or
 
 Windows terminal:
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -11,11 +31,13 @@ Windows terminal:
 Mac terminal:
 > source .venv/bin/activate
 
-2. Run app.py
+2. Run:
+> python app.py
+> node server.js
 
-3. Right click index.html > Open with Live server
+- Visit website URL
 
-4. Start chatting with the Chatbot
+3. Start chatting with the Chatbot
 
 
 # To do

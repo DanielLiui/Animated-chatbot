@@ -1,6 +1,12 @@
-let sendButton = document.querySelector(".send-button")
-let inputField = document.querySelector(".input-field")
-let messageArea = document.querySelector(".message-area")
+
+
+let sendButton = qSel(".send-button")
+let inputField = qSel(".input-field")
+let messageArea = qSel(".message-area")
+let textChatButton = qSel("#text-mode-button")
+let audioChatButton = qSel("#audio-mode-button")
+
+//message in global.js
 
 
 //functions (event listeners below)
@@ -9,7 +15,7 @@ function sendMessage(profileImg, message) {
   messageDiv.className = 'message'
 
   let img = document.createElement('img')
-  img.src = '../assets/' + profileImg
+  img.src = '/assets/' + profileImg
   messageDiv.appendChild(img)
 
   let messageSpan = document.createElement('span');
@@ -20,32 +26,53 @@ function sendMessage(profileImg, message) {
 }
 
 
-function botResponse(message) {
-  let reqData = {message: message} 
+function botReply(message) {
+  let reqData = {message: message, userID: userID} 
   xr = new XMLHttpRequest()
-  xr.open("POST", serverPort + "/getResponse")  
+  xr.open("POST", serverPort + "/botReply")  
   xr.setRequestHeader("Content-Type", "application/json")
   xr.send(JSON.stringify(reqData))
 
   xr.onreadystatechange = () => {
     if (xr.readyState == 4 && xr.status == 200) {
       ret = JSON.parse(xr.responseText)
-      console.log("Resp from server: " + ret)
-      sendMessage("K-VRC.png", ret.response)
+      botMessages.push(ret.reply)
+      sendMessage("botProfile.jpg", ret.reply)
     }
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  function messageExchange() {
-    message = inputField.value.trim()
 
-    if (message !== '') {
-      inputField.value = ''
-      sendMessage('porcupine.png', message)  //display user message
-      botResponse(message)
-    }
+function messageExchange() {
+  let message = inputField.value.trim()
+  userMessages.push(message) 
+  inputField.value = ''
+  sendMessage('porcupine.png', message)
+  botReply(message)
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (userID == '') userID = makeUUID()
+
+  //display existing messages (number of bot messages might be 1 less than number of user messages)
+  //for loop displays all messages except last one 
+  log("User: "); log(userMessages)
+  log("Bot: "); log(botMessages)
+
+  for (let i = 0; i < userMessages.length - 1; i++) {  
+    sendMessage('porcupine.png', userMessages[i])
+    sendMessage('botProfile.jpg', botMessages[i])
   }
+
+  //display last user & bot messages
+  if (userMessages.length != 0) sendMessage('porcupine.png', userMessages[userMessages.length - 1])
+  if (botMessages.length != 0 && botMessages.length == userMessages.length) {
+    sendMessage('botProfile.jpg', botMessages[botMessages.length - 1])
+  }
+
+  inputField.value = message
+
  
   //event listeners
   sendButton.addEventListener('click', (ev)=> {
@@ -58,6 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ev.preventDefault()
       messageExchange()
     }
+  })
+
+  audioChatButton.addEventListener('click', (ev)=> {
+    message = inputField.value.trim()
+    window.location.href = '/audioChat'
   })
 })
 

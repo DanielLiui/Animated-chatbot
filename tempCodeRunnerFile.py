@@ -1,1 +1,0 @@
-The text you provided acknowledges the gravity of loss and suffering caused by war. It emphasizes the importance of recognizing the human cost and seeking peaceful resolutions
