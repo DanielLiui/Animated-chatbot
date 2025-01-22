@@ -100,8 +100,8 @@ def googleTTS(text):
 
   response = client.synthesize_speech(input=synthesis_input, voice=voice, audio_config=audio_config)
 
-  with open("googleSpeech.mp3", "wb") as out:
-    out.write(response.audio_content)  #write binary string to file
+  # with open("googleSpeech.mp3", "wb") as out:
+  #   out.write(response.audio_content)  #write binary string to file
 
   return response.audio_content
       

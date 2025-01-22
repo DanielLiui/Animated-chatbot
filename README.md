@@ -1,20 +1,19 @@
 # Animated chatbot
 
 Text chat:
-- GPT/Copilot styled text chat with profile pictures next to messages
+- Speech bubble conversation with a chatbot
+- Can type a message, switch to audio chat, & send it to get back an audio response
 
 Audio chat:
-- Click microphone button & speak, click button again to stop recording
-- Can switch to text chat quickly to see what you said
-- Click microphone button to say more, send button to send
-
-- Chatbot will respond in audible form & have animated avatar
-- Can switch to text chat quickly to see written conversation
+- Click microphone button & speak, click button again to pause recording
+- Can switch to text chat quickly to see entire conversation and what you said
+- Click microphone button to say more, click send button to get back an audio reply
+- The animated chatbot avatar's facial expressions will match what it's saying
 
 
 # Folders & files
-- Some folders & files like flask_sesion, Lib, Scripts, & pyvenv.cfg are needed for 
-the virtual environment
+- Some folders & files like flask_sesion, Lib, Scripts, & pyvenv.cfg are needed for the virtual environment
+
 
 # Run
 1. Setup
@@ -39,10 +38,3 @@ Mac terminal:
 
 3. Start chatting with the Chatbot
 
-
-# To do
-Audio chat:
-- Improve voice to sound more natural
-- Talking in audio chat then opening text chat will display what u said
-- Fix issue where animation doesn't display for initial sentence
-- Tweak animations & add fidgity animation
