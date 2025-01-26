@@ -11,6 +11,12 @@ Audio chat:
 - The animated chatbot avatar's facial expressions will match what it's saying
 
 
+# Toolkit
+1. Frontend: HTML/CSS/JS
+2. Backend: Flask
+3. APIs: OpenAI, Google Cloud's text-to-speech
+
+
 # Folders & files
 - Some folders & files like Lib, Scripts, & pyvenv.cfg are needed for the virtual environment
 
@@ -21,7 +27,7 @@ Audio chat:
 Install node modules:
 > npm install
 
-Activate virtual environment by selecting the virtual environment in your IDE or
+Select the virtual environment in your IDE or activate via
 
 Windows terminal:
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
