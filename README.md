@@ -22,7 +22,7 @@ Audio chat:
 - Some folders & files like Lib, Scripts, & pyvenv.cfg are needed for the virtual environment
 
 
-# How to run in an IDE
+# How to run the app in an IDE
 1. Setup
 
 Install node modules:
