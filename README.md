@@ -12,16 +12,16 @@ Audio chat:
 
 
 # Folders & files
-- Some folders & files like flask_sesion, Lib, Scripts, & pyvenv.cfg are needed for the virtual environment
+- Some folders & files like Lib, Scripts, & pyvenv.cfg are needed for the virtual environment
 
 
-# Run
+# How to run in an IDE
 1. Setup
 
 Install node modules:
 > npm install
 
-Activate virtual environment by selecting virtual environment as your interpreter in the bottom right or
+Activate virtual environment by selecting the virtual environment in your IDE or
 
 Windows terminal:
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -36,5 +36,5 @@ Mac terminal:
 
 - Visit website URL
 
-3. Start chatting with the Chatbot
+3. Start chatting with the chatbot!
 
