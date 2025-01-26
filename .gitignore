@@ -1,6 +1,6 @@
-dansStuff
-node_modules
-flask_session
-practice
-Lib
-Scripts
+dansStuff/
+node_modules/
+flask_session/
+practice/
+Lib/
+Scripts/
