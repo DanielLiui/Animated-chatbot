@@ -1,5 +1,5 @@
 
-const serverPort = 'http://127.0.0.1:7000'  
+const serverPort = 'https://animated-chatbot-ai-api.onrender.com'  
 //if working locally: http://127.0.0.1:7000
 //else for deployment: https://animated-chatbot-ai-api.onrender.com
 
