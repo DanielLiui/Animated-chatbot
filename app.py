@@ -91,9 +91,12 @@ def getBotReply(message, user_id):
 
 #Google's TTS
 from google.cloud import texttospeech
+api_key = os.getenv("TTS_API_KEY")
 
 def googleTTS(text):
-  client = texttospeech.TextToSpeechClient.from_service_account_file('./assets/textToSpeechKey.json')
+  global api_key
+  client_options = {"api_key": api_key}
+  client = texttospeech.TextToSpeechClient(client_options=client_options)
   synthesis_input = texttospeech.SynthesisInput(text=text)
   voice = texttospeech.VoiceSelectionParams(language_code="en-US", name="en-US-Standard-I", ssml_gender=texttospeech.SsmlVoiceGender.MALE)
   audio_config = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3)
