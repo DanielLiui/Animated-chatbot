@@ -23,25 +23,5 @@ Audio chat:
 
 
 # How to run the app in an IDE
-1. Setup
-
-Install node modules:
-> npm install
-
-Select the virtual environment in your IDE or activate via
-
-Windows terminal:
-> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-> .venv\Scripts\activate
-
-Mac terminal:
-> source .venv/bin/activate
-
-2. Run:
-> python app.py
-> node server.js
-
-- Visit website URL
-
-3. Start chatting with the chatbot!
+Setting up the API keys takes quite a few steps, so I don't recommend running the app locally
 
