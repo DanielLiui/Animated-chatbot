@@ -24,6 +24,33 @@ function sendMessage(profileImg, message) {
 }
 
 
+function loadingBotReplyAnimation() {
+  let messageDiv = document.createElement('div')
+  messageDiv.classList.add('message', 'loading-message')
+
+  let img = document.createElement('img')
+  img.src = '/assets/botProfile.jpg'
+  messageDiv.appendChild(img)
+
+  let loadDiv = document.createElement('div'); loadDiv.id = 'text-load-div'
+  loadDiv.style.display = 'block'
+  let loader = document.createElement('div'); loader.className = 'text-loader'
+  loadDiv.appendChild(loader)
+
+  let messageSpan = document.createElement('span');
+  messageSpan.className = 'message-text'
+  messageSpan.appendChild(loadDiv)
+  messageDiv.appendChild(messageSpan)
+  messageArea.appendChild(messageDiv)
+}
+
+
+function stopLoadingBotReply() {
+  let messageDiv = qSel('.loading-message')
+  messageDiv.remove()
+}
+
+
 function botReply(message) {
   let reqData = {message: message, userID: userID} 
   xr = new XMLHttpRequest()
@@ -35,6 +62,7 @@ function botReply(message) {
     if (xr.readyState == 4 && xr.status == 200) {
       ret = JSON.parse(xr.responseText)
       botMessages.push(ret.reply)
+      stopLoadingBotReply()
       sendMessage("botProfile.jpg", ret.reply)
     }
   }
@@ -46,6 +74,7 @@ function messageExchange() {
   saveUserMessage(message)
   inputField.value = ''
   sendMessage('porcupine.png', message)
+  loadingBotReplyAnimation()
   botReply(message)
 }
 
@@ -70,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   inputField.value = message
-
  
   //event listeners
   sendButton.addEventListener('click', (ev)=> {
